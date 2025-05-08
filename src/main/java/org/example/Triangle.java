@@ -1,15 +1,15 @@
 package org.example;
 
-import jdk.jshell.spi.ExecutionControl;
-
-import java.util.Dictionary;
-
-
 /*
-* Triangle class has no input validation
-* When operations are needed, it should calculate through its private IsValid function
+* Triangle Class
+
+* Methods:
+* IsValid checks for triangle validity
+* SumOfTwoSidesGreaterThanSmaller is a private helper method for IsValid
+* GetTriangleType
 *
- */
+* All of them are static so that they can be used with freedom and not necessarily attached to a Triangle instance
+*/
 
 public class Triangle {
     int a, b, c;
@@ -20,6 +20,7 @@ public class Triangle {
         this.c = c;
     }
 
+    // Given a triangle object, mathematically checks for its validity
     public static boolean IsValid(Triangle t) {
         // Triangle sides must not empty or negative
         if (t.a <= 0 || t.b <= 0 || t.c <= 0) {
@@ -34,6 +35,8 @@ public class Triangle {
         return (a + b) > c && (a + c) > b && (b + c) > a;
     }
 
+    // Returns a string according to the triangle types - "Scalene", "Isosceles" and "Equilateral"
+    // If trying to get type from an invalid triangle, returns "Invalid"
     public static String GetTriangleType(Triangle t) {
         if (!Triangle.IsValid(t)) {
             return "Invalid";
